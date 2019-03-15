@@ -20,11 +20,6 @@ function playerChoice(player) {
   totalGames++
   $("#score").html(`Player: ${playerScore}<br>Computer: ${computerScore}<br>Total: ${totalGames}`)
   if ((playerScore == 3 || computerScore == 3 || totalGames >= 5) && playerScore != computerScore) {
-    // var rpsButtons = document.getElementsByClassName("btn-default")
-    // var i
-    // for (i = 0; i < rpsButtons.length; i++) {
-    //   rpsButtons[i]..prop("disabled", true)
-    // }
     $("#btn-rock").prop("disabled", true)
     $("#btn-paper").prop("disabled", true)
     $("#btn-scissors").prop("disabled", true)
@@ -39,11 +34,6 @@ function playerChoice(player) {
 }
 
 function resetGame() {
-  // var rpsButtons = document.getElementsByClassName("btn btn-default")
-  // var i
-  // for (i = 0; i < rpsButtons.length; i++) {
-  //   rpsButtons[i]..prop("disabled", false)
-  // }
   totalGames = 0
   computerScore = 0
   playerScore = 0
