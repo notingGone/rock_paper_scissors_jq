@@ -1,22 +1,54 @@
-  var playerScore = 0
-  var computerScore = 0
-  var totalGames = 0
-  function playerChoice(player) {
-      var hand = ["rock", "paper", "scissors"]
-      var randNum = Math.floor(Math.random() * 3)
-      var computer = hand[randNum]
-      $("#compChoice").html(`I picked ${computer}.`)
-      if (player == computer) {
-        $("#result").html('Tie Game!')
-      }
-      else if ((player == "rock" && computer == "paper") || (player == "paper" && computer == "scissors") || (player == "scissors" && computer == "rock")) {
-        $("#result").html('I beat you this time. Too easy.')
-        computerScore++
-      }
-      else if ((computer == "rock" && player == "paper") || (computer == "paper" && player == "scissors") || (computer == "scissors" && player == "rock")) {
-        $("#result").html('You beat me this time. *cough*cough*CHEATER*cough*')
-        playerScore++
-      }
-      totalGames++
-      $("#score").html(`Player: ${playerScore}<br>Computer: ${computerScore}<br>Total: ${totalGames}`)
+var playerScore = 0
+var computerScore = 0
+var totalGames = 0
+function playerChoice(player) {
+  var hand = ["rock", "paper", "scissors"]
+  var randNum = Math.floor(Math.random() * 3)
+  var computer = hand[randNum]
+  $("#comp-choice").html(`I picked ${computer}.`)
+  if (player == computer) {
+    $("#result").html('Tie Game!')
+  }
+  else if ((player == "rock" && computer == "paper") || (player == "paper" && computer == "scissors") || (player == "scissors" && computer == "rock")) {
+    $("#result").html('I beat you this time. Too easy.')
+    computerScore++
+  }
+  else if ((computer == "rock" && player == "paper") || (computer == "paper" && player == "scissors") || (computer == "scissors" && player == "rock")) {
+    $("#result").html('You beat me this time. *cough*cough*CHEATER*cough*')
+    playerScore++
+  }
+  totalGames++
+  $("#score").html(`Player: ${playerScore}<br>Computer: ${computerScore}<br>Total: ${totalGames}`)
+  if (playerScore == 5 || computerScore == 5) {
+    // var rpsButtons = document.getElementsByClassName("btn-default")
+    // var i
+    // for (i = 0; i < rpsButtons.length; i++) {
+    //   rpsButtons[i]..prop("disabled", true)
+    // }
+    $("#btn-rock").prop("disabled", true)
+    $("#btn-paper").prop("disabled", true)
+    $("#btn-scissors").prop("disabled", true)
+    if (playerScore == 5) {
+      gameEndMessage = "Congratulations, you won 5 games.<br>Humans cheat."
     }
+    else {
+      gameEndMessage = "Sorry, Computer won 5 games.<br>Machines are superior to humans."
+    }
+    $("#game-end-message").html(gameEndMessage)
+  }
+}
+
+function resetGame() {
+  // var rpsButtons = document.getElementsByClassName("btn btn-default")
+  // var i
+  // for (i = 0; i < rpsButtons.length; i++) {
+  //   rpsButtons[i]..prop("disabled", false)
+  // }
+  $("#btn-rock").prop("disabled", false)
+  $("#btn-paper").prop("disabled", false)
+  $("#btn-scissors").prop("disabled", false)
+  $("#comp-choice").html('')
+  $("#result").html('')
+  $("#score").html('Player: 0<br>Computer: 0<br>Total: 0')
+  $("#game-end-message").html('')
+}
