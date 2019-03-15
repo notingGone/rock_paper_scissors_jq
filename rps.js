@@ -19,7 +19,7 @@ function playerChoice(player) {
   }
   totalGames++
   $("#score").html(`Player: ${playerScore}<br>Computer: ${computerScore}<br>Total: ${totalGames}`)
-  if (playerScore == 3 || computerScore == 3 || totalGames == 5) {
+  if ((playerScore == 3 || computerScore == 3 || totalGames >= 5) && playerScore != computerScore) {
     // var rpsButtons = document.getElementsByClassName("btn-default")
     // var i
     // for (i = 0; i < rpsButtons.length; i++) {
