@@ -19,7 +19,7 @@ function playerChoice(player) {
   }
   totalGames++
   $("#score").html(`Player: ${playerScore}<br>Computer: ${computerScore}<br>Total: ${totalGames}`)
-  if (playerScore == 5 || computerScore == 5) {
+  if (playerScore == 3 || computerScore == 3 || totalGames == 5) {
     // var rpsButtons = document.getElementsByClassName("btn-default")
     // var i
     // for (i = 0; i < rpsButtons.length; i++) {
@@ -28,11 +28,11 @@ function playerChoice(player) {
     $("#btn-rock").prop("disabled", true)
     $("#btn-paper").prop("disabled", true)
     $("#btn-scissors").prop("disabled", true)
-    if (playerScore == 5) {
-      gameEndMessage = "Congratulations, you won 5 games.<br>Humans cheat."
+    if (playerScore > computerScore) {
+      gameEndMessage = "Congratulations, you won best of 5 games.<br>Humans cheat."
     }
     else {
-      gameEndMessage = "Sorry, Computer won 5 games.<br>Machines are superior to humans."
+      gameEndMessage = "Sorry, Computer won best of 5 games.<br>Machines are superior to humans."
     }
     $("#game-end-message").html(gameEndMessage)
   }
@@ -44,6 +44,9 @@ function resetGame() {
   // for (i = 0; i < rpsButtons.length; i++) {
   //   rpsButtons[i]..prop("disabled", false)
   // }
+  totalGames = 0
+  computerScore = 0
+  playerScore = 0
   $("#btn-rock").prop("disabled", false)
   $("#btn-paper").prop("disabled", false)
   $("#btn-scissors").prop("disabled", false)
